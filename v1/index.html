@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agentura domácí zdravotní péče Holoubkov | Staráme se o Vaše zdraví u Vás doma</title>
+    <meta name="description" content="Zajišťujeme domácí zdravotní péči poskytovanou všem věkovým kategoriím - dětem, starým, chronicky nemocným a umírajícím v domácím prostředí.">
+    <meta name="keywords" content="domácí péče, zdravotní péče, Holoubkov, ošetřovatelství, domácí ošetřování, péče o seniory">
+    
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- External Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r160/three.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js" defer></script>
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- ============================================ -->
+    <!-- 3D CANVAS BACKGROUND                         -->
+    <!-- ============================================ -->
+    <canvas id="webgl-canvas"></canvas>
+    
+    <!-- ============================================ -->
+    <!-- NAVIGATION                                   -->
+    <!-- ============================================ -->
+    <nav class="main-nav" id="mainNav">
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo">
+                <i data-lucide="heart-pulse" class="nav-logo-icon"></i>
+                <span class="nav-logo-text">Domácí péče <span class="nav-logo-accent">Holoubkov</span></span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Otevřít menu">
+                <span class="nav-toggle-bar"></span>
+                <span class="nav-toggle-bar"></span>
+                <span class="nav-toggle-bar"></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#hero" class="nav-link active">Domů</a></li>
+                <li><a href="#about" class="nav-link">O nás</a></li>
+                <li><a href="#services" class="nav-link">Služby</a></li>
+                <li><a href="#team" class="nav-link">Náš tým</a></li>
+                <li><a href="#why-us" class="nav-link">Proč my</a></li>
+                <li><a href="#testimonials" class="nav-link">Reference</a></li>
+                <li><a href="#contact" class="nav-link nav-link-cta">Kontakt</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ============================================ -->
+    <!-- HERO SECTION                                 -->
+    <!-- ============================================ -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <i data-lucide="shield-check" class="hero-badge-icon"></i>
+                <span>Certifikovaná zdravotní péče od roku 2010</span>
+            </div>
+            <h1 class="hero-title">
+                <span class="hero-title-line">Staráme se o Vaše zdraví</span>
+                <span class="hero-title-line hero-title-line-accent">u Vás doma</span>
+            </h1>
+            <h2 class="hero-subtitle">Agentura domácí zdravotní péče Holoubkov</h2>
+            <p class="hero-address">
+                <i data-lucide="map-pin" class="hero-address-icon"></i>
+                Holoubkov 7
+            </p>
+            <p class="hero-description">
+                Zajišťujeme domácí zdravotní péči poskytovanou všem věkovým kategoriím, to znamená dětem, starým, chronicky nemocným a umírajícím v domácím prostředí, nebo v rodinách svých nejbližších.
+            </p>
+            <div class="hero-cta-group">
+                <a href="#contact" class="btn btn-primary">
+                    <span>Nezávazná konzultace</span>
+                    <i data-lucide="arrow-right" class="btn-icon"></i>
+                </a>
+                <a href="#services" class="btn btn-secondary">
+                    <span>Naše služby</span>
+                    <i data-lucide="chevron-down" class="btn-icon"></i>
+                </a>
+            </div>
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <span class="hero-stat-number" data-count="14">0</span>
+                    <span class="hero-stat-label">let zkušeností</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="hero-stat-number" data-count="2500">0</span>
+                    <span class="hero-stat-suffix">+</span>
+                    <span class="hero-stat-label">spokojených klientů</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="hero-stat-number" data-count="24">0</span>
+                    <span class="hero-stat-suffix">/7</span>
+                    <span class="hero-stat-label">dostupnost</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-image-wrapper">
+            <div class="hero-image-frame">
+                <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&h=600&fit=crop" 
+                     alt="Zdravotní sestra poskytuje péči seniorovi v domácím prostředí" 
+                     class="hero-image"
+                     loading="eager">
+                <div class="hero-image-glow"></div>
+                <div class="hero-image-badge">
+                    <i data-lucide="award" class="hero-image-badge-icon"></i>
+                    <div>
+                        <span class="hero-image-badge-title">Licencovaná péče</span>
+                        <span class="hero-image-badge-sub">Ministerstvo zdravotnictví ČR</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-scroll-indicator">
+            <div class="hero-scroll-mouse">
+                <div class="hero-scroll-wheel"></div>
+            </div>
+            <span class="hero-scroll-text">Posunout dolů</span>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- ABOUT SECTION                                -->
+    <!-- ============================================ -->
+    <section class="about" id="about">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">O nás</span>
+                <h2 class="section-title">Profesionální péče s lidským přístupem</h2>
+                <p class="section-subtitle">Již více než deset let pomáháme rodinám v těžkých chvílích</p>
+            </div>
+            <div class="about-grid">
+                <div class="about-card">
+                    <div class="about-card-icon-wrapper">
+                        <i data-lucide="heart-handshake" class="about-card-icon"></i>
+                    </div>
+                    <h3 class="about-card-title">Lidský přístup</h3>
+                    <p class="about-card-text">Každý pacient je pro nás jedinečný. Respektujeme jeho potřeby, přání a důstojnost v každé fázi života.</p>
+                </div>
+                <div class="about-card">
+                    <div class="about-card-icon-wrapper">
+                        <i data-lucide="graduation-cap" class="about-card-icon"></i>
+                    </div>
+                    <h3 class="about-card-title">Kvalifikovaný tým</h3>
+                    <p class="about-card-text">Naši zdravotníci mají odborné vzdělání a pravidelně se vzdělávají v nejmodernějších postupech domácí péče.</p>
+                </div>
+                <div class="about-card">
+                    <div class="about-card-icon-wrapper">
+                        <i data-lucide="clock" class="about-card-icon"></i>
+                    </div>
+                    <h3 class="about-card-title">Nepřetržitá péče</h3>
+                    <p class="about-card-text">Jsme tu pro Vás 24 hodin denně, 7 dní v týdnu. V akutních případech reagujeme okamžitě.</p>
+                </div>
+                <div class="about-card">
+                    <div class="about-card-icon-wrapper">
+                        <i data-lucide="home" class="about-card-icon"></i>
+                    </div>
+                    <h3 class="about-card-title">Pohodlí domova</h3>
+                    <p class="about-card-text">Přinášíme profesionální zdravotní péči přímo do Vašeho domova, kde se pacient cítí nejlépe.</p>
+                </div>
+            </div>
+            <div class="about-mission">
+                <div class="about-mission-content">
+                    <h3 class="about-mission-title">Naše mise</h3>
+                    <p class="about-mission-text">
+                        Věříme, že každý člověk si zaslouží důstojnou péči v prostředí, které miluje. Naším cílem je umožnit pacientům zůstat doma co nejdéle, obklopeni svými blízkými, s plnou podporou profesionální zdravotní péče.
+                    </p>
+                    <div class="about-mission-stats">
+                        <div class="about-mission-stat">
+                            <span class="about-mission-stat-value">98%</span>
+                            <span class="about-mission-stat-label">spokojenost klientů</span>
+                        </div>
+                        <div class="about-mission-stat">
+                            <span class="about-mission-stat-value">15+</span>
+                            <span class="about-mission-stat-label">kvalifikovaných sester</span>
+                        </div>
+                        <div class="about-mission-stat">
+                            <span class="about-mission-stat-value">50km</span>
+                            <span class="about-mission-stat-label">působnost okolo Holoubkova</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-mission-visual">
+                    <div class="about-mission-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1581056771107-24ca5f033842?w=600&h=500&fit=crop" 
+                             alt="Péče o pacienta v domácím prostředí" 
+                             class="about-mission-image"
+                             loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- SERVICES SECTION                             -->
+    <!-- ============================================ -->
+    <section class="services" id="services">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">Služby</span>
+                <h2 class="section-title">Komplexní domácí zdravotní péče</h2>
+                <p class="section-subtitle">Poskytujeme široké spektrum služeb pro všechny věkové kategorie</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card" data-tilt>
+                    <div class="service-card-front">
+                        <div class="service-card-icon">
+                            <i data-lucide="stethoscope"></i>
+                        </div>
+                        <h3 class="service-card-title">Základní ošetřovatelská péče</h3>
+                        <p class="service-card-desc">Komplexní ošetřovatelská péče v domácím prostředí</p>
+                        <span class="service-card-more">Více informací <i data-lucide="arrow-right"></i></span>
+                    </div>
+                    <div class="service-card-back">
+                        <h4 class="service-card-back-title">Základní ošetřovatelská péče</h4>
+                        <ul class="service-card-list">
+                            <li><i data-lucide="check-circle"></i> Aplikace injekcí a infuzí</li>
+                            <li><i data-lucide="check-circle"></i> Péče o stomie a katetry</li>
+                            <li><i data-lucide="check-circle"></i> Převazy ran a dekubitů</li>
+                            <li><i data-lucide="check-circle"></i> Odběry biologického materiálu</li>
+                            <li><i data-lucide="check-circle"></i> Monitorování životních funkcí</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="service-card" data-tilt>
+                    <div class="service-card-front">
+                        <div class="service-card-icon">
+                            <i data-lucide="pill"></i>
+                        </div>
+                        <h3 class="service-card-title">Péče o chronicky nemocné</h3>
+                        <p class="service-card-desc">Dlouhodobá péče o pacienty s chronickými onemocněními</p>
+                        <span class="service-card-more">Více informací <i data-lucide="arrow-right"></i></span>
+                    </div>
+                    <div class="service-card-back">
+                        <h4 class="service-card-back-title">Péče o chronicky nemocné</h4>
+                        <ul class="service-card-list">
+                            <li><i data-lucide="check-circle"></i> Diabetes mellitus</li>
+                            <li><i data-lucide="check-circle"></i> Kardiovaskulární onemocnění</li>
+                            <li><i data-lucide="check-circle"></i> Onemocnění dýchacího ústrojí</li>
+                            <li><i data-lucide="check-circle"></i> Neurologická onemocnění</li>
+                            <li><i data-lucide="check-circle"></i> Onkologická onemocnění</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="service-card" data-tilt>
+                    <div class="service-card-front">
+                        <div class="service-card-icon">
+                            <i data-lucide="baby"></i>
+                        </div>
+                        <h3 class="service-card-title">Péče o děti</h3>
+                        <p class="service-card-desc">Specializovaná péče o dětské pacienty v domácím prostředí</p>
+                        <span class="service-card-more">Více informací <i data-lucide="arrow-right"></i></span>
+                    </div>
+                    <div class="service-card-back">
+                        <h4 class="service-card-back-title">Péče o děti</h4>
+                        <ul class="service-card-list">
+                            <li><i data-lucide="check-circle"></i> Péče o novorozence a kojence</li>
+                            <li><i data-lucide="check-circle"></i> Dětská rehabilitace</li>
+                            <li><i data-lucide="check-circle"></i> Péče o děti s postižením</li>
+                            <li><i data-lucide="check-circle"></i> Výživové poradenství</li>
+                            <li><i data-lucide="check-circle"></i> Rodinná podpora a vzdělávání</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="service-card" data-tilt>
+                    <div class="service-card-front">
+                        <div class="service-card-icon">
+                            <i data-lucide="heart"></i>
+                        </div>
+                        <h3 class="service-card-title">Paliativní péče</h3>
+                        <p class="service-card-desc">Důstojná péče v závěru života s maximálním komfortem</p>
+                        <span class="service-card-more">Více informací <i data-lucide="arrow-right"></i></span>
+                    </div>
+                    <div class="service-card-back">
+                        <h4 class="service-card-back-title">Paliativní péče</h4>
+                        <ul class="service-card-list">
+                            <li><i data-lucide="check-circle"></i> Kontrola bolesti a symptomů</li>
+                            <li><i data-lucide="check-circle"></i> Psychosociální podpora</li>
+                            <li><i data-lucide="check-circle"></i> Duchovní podpora</li>
+                            <li><i data-lucide="check-circle"></i> Podpora rodiny a blízkých</li>
+                            <li><i data-lucide="check-circle"></i> Koordinace multidisciplinární péče</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="service-card" data-tilt>
+                    <div class="service-card-front">
+                        <div class="service-card-icon">
+                            <i data-lucide="accessibility"></i>
+                        </div>
+                        <h3 class="service-card-title">Rehabilitace doma</h3>
+                        <p class="service-card-desc">Fyzioterapie a rehabilitace v pohodlí domova</p>
+                        <span class="service-card-more">Více informací <i data-lucide="arrow-right"></i></span>
+                    </div>
+                    <div class="service-card-back">
+                        <h4 class="service-card-back-title">Rehabilitace doma</h4>
+                        <ul class="service-card-list">
+                            <li><i data-lucide="check-circle"></i> Fyzioterapie po úrazech</li>
+                            <li><i data-lucide="check-circle"></i> Rehabilitace po cévní mozkové příhodě</li>
+                            <li><i data-lucide="check-circle"></i> Cvičení pro seniory</li>
+                            <li><i data-lucide="check-circle"></i> Masáže a fyzikální terapie</li>
+                            <li><i data-lucide="check-circle"></i> Nácvik chůze a mobility</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="service-card" data-tilt>
+                    <div class="service-card-front">
+                        <div class="service-card-icon">
+                            <i data-lucide="users"></i>
+                        </div>
+                        <h3 class="service-card-title">Péče o seniory</h3>
+                        <p class="service-card-desc">Komplexní péče o starší osoby s důrazem na kvalitu života</p>
+                        <span class="service-card-more">Více informací <i data-lucide="arrow-right"></i></span>
+                    </div>
+                    <div class="service-card-back">
+                        <h4 class="service-card-back-title">Péče o seniory</h4>
+                        <ul class="service-card-list">
+                            <li><i data-lucide="check-circle"></i> Pomoc s hygienou a osobní péčí</li>
+                            <li><i data-lucide="check-circle"></i> Podpora mobility a prevence pádů</li>
+                            <li><i data-lucide="check-circle"></i> Kontrola medikace</li>
+                            <li><i data-lucide="check-circle"></i> Společenská aktivizace</li>
+                            <li><i data-lucide="check-circle"></i> Péče o duševní zdraví</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- TEAM SECTION                                 -->
+    <!-- ============================================ -->
+    <section class="team" id="team">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">Náš tým</span>
+                <h2 class="section-title">Lidé, na které se můžete spolehnout</h2>
+                <p class="section-subtitle">Profesionální tým srdcařů, kteří milují svou práci</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="team-member-photo-wrapper">
+                        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&h=400&fit=crop&crop=face" 
+                             alt="Vedoucí sestra" 
+                             class="team-member-photo"
+                             loading="lazy">
+                        <div class="team-member-overlay">
+                            <div class="team-member-social">
+                                <a href="#" aria-label="Email"><i data-lucide="mail"></i></a>
+                                <a href="#" aria-label="Telefon"><i data-lucide="phone"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="team-member-name">Mgr. Jana Nováková</h3>
+                    <p class="team-member-role">Vedoucí sestra</p>
+                    <p class="team-member-bio">15 let zkušeností v domácí péči, specializace na paliativní péči.</p>
+                </div>
+                <div class="team-member">
+                    <div class="team-member-photo-wrapper">
+                        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&h=400&fit=crop&crop=face" 
+                             alt="Zdravotní sestra" 
+                             class="team-member-photo"
+                             loading="lazy">
+                        <div class="team-member-overlay">
+                            <div class="team-member-social">
+                                <a href="#" aria-label="Email"><i data-lucide="mail"></i></a>
+                                <a href="#" aria-label="Telefon"><i data-lucide="phone"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="team-member-name">Bc. Petra Svobodová</h3>
+                    <p class="team-member-role">Zdravotní sestra</p>
+                    <p class="team-member-bio">Specialistka na péči o chronicky nemocné a dětské pacienty.</p>
+                </div>
+                <div class="team-member">
+                    <div class="team-member-photo-wrapper">
+                        <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=400&h=400&fit=crop&crop=face" 
+                             alt="Fyzioterapeut" 
+                             class="team-member-photo"
+                             loading="lazy">
+                        <div class="team-member-overlay">
+                            <div class="team-member-social">
+                                <a href="#" aria-label="Email"><i data-lucide="mail"></i></a>
+                                <a href="#" aria-label="Telefon"><i data-lucide="phone"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="team-member-name">MUDr. Tomáš Dvořák</h3>
+                    <p class="team-member-role">Ošetřující lékař</p>
+                    <p class="team-member-bio">Koordinace léčby, domácí návštěvy, specializace na geriatrii.</p>
+                </div>
+                <div class="team-member">
+                    <div class="team-member-photo-wrapper">
+                        <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=400&h=400&fit=crop&crop=face" 
+                             alt="Zdravotní sestra" 
+                             class="team-member-photo"
+                             loading="lazy">
+                        <div class="team-member-overlay">
+                            <div class="team-member-social">
+                                <a href="#" aria-label="Email"><i data-lucide="mail"></i></a>
+                                <a href="#" aria-label="Telefon"><i data-lucide="phone"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="team-member-name">Bc. Marie Kučerová</h3>
+                    <p class="team-member-role">Zdravotní sestra</p>
+                    <p class="team-member-bio">Expertka na rehabilitaci a fyzioterapii v domácím prostředí.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- WHY US SECTION                               -->
+    <!-- ============================================ -->
+    <section class="why-us" id="why-us">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">Proč my</span>
+                <h2 class="section-title">Co nás odlišuje od ostatních</h2>
+                <p class="section-subtitle">Naše hodnoty a přístup k péči</p>
+            </div>
+            <div class="why-us-content">
+                <div class="why-us-features">
+                    <div class="why-us-feature" data-index="1">
+                        <div class="why-us-feature-number">01</div>
+                        <div class="why-us-feature-content">
+                            <h3>Individuální plán péče</h3>
+                            <p>Každý pacient dostává personalizovaný plán péče přizpůsobený jeho konkrétním potřebám, zdravotnímu stavu a rodinné situaci. Plán pravidelně revidujeme a upravujeme.</p>
+                        </div>
+                    </div>
+                    <div class="why-us-feature" data-index="2">
+                        <div class="why-us-feature-number">02</div>
+                        <div class="why-us-feature-content">
+                            <h3>Komunikace s rodinou</h3>
+                            <p>Pravidelně informujeme rodinu o stavu pacienta. Jsme dostupní telefonicky i osobně. Rodinu zapojujeme do péče a vzděláváme ji.</p>
+                        </div>
+                    </div>
+                    <div class="why-us-feature" data-index="3">
+                        <div class="why-us-feature-number">03</div>
+                        <div class="why-us-feature-content">
+                            <h3>Multidisciplinární spolupráce</h3>
+                            <p>Spolupracujeme s praktickými lékaři, specialisty, fyzioterapeuty a sociálními pracovníky pro komplexní péči.</p>
+                        </div>
+                    </div>
+                    <div class="why-us-feature" data-index="4">
+                        <div class="why-us-feature-number">04</div>
+                        <div class="why-us-feature-content">
+                            <h3>Důraz na prevenci</h3>
+                            <p>Nejen léčíme, ale také preventivně působíme proti komplikacím, dekubitům, pádům a dalším rizikům spojeným s domácí péčí.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="why-us-visual">
+                    <div class="why-us-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?w=500&h=600&fit=crop" 
+                             alt="Péče o pacienta" 
+                             class="why-us-image"
+                             loading="lazy">
+                    </div>
+                    <div class="why-us-floating-card">
+                        <i data-lucide="shield-check" class="why-us-floating-icon"></i>
+                        <div>
+                            <span class="why-us-floating-title">Certifikace</span>
+                            <span class="why-us-floating-sub">ISO 9001:2015</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- TESTIMONIALS SECTION                         -->
+    <!-- ============================================ -->
+    <section class="testimonials" id="testimonials">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">Reference</span>
+                <h2 class="section-title">Co o nás říkají naši klienti</h2>
+                <p class="section-subtitle">Důvěra rodin, které jsme pomohli</p>
+            </div>
+            <div class="testimonials-slider" id="testimonialsSlider">
+                <div class="testimonials-track">
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">
+                            <i data-lucide="star" class="star-filled"></i>
+                            <i data-lucide="star" class="star-filled"></i>
+                            <i data-lucide="star" class="star-filled"></i>
+                            <i data-lucide="star" class="star-filled"></i>
+                            <i data-lucide="star" class="star-filled"></i>
+                        </div>
+                        <p class="testimonial-text">"Paní Nováková a její tým se o naši maminku starali s maximální péčí a láskou v posledních měsících jejího života. Díky nim mohla zůstat doma, kde chtěla být. Jsme jim nesmírně vděční."</p>
+                        <div class="testimonial-author">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face" 
+                                 alt="Klientka" 
+                                 class="testimonial-avatar"
+                                 loading="lazy">
+                            <div class="testimonial-author-info">
+                                <span class="testimonial-name">Eva K., Rokycany</span>
+                                <span class="testimonial-relation">Dcera pacientky</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">
+                            <i data-lucide="star" class="star-filled"></i>
+                            <i data-lucide="star" class="star-filled"></i>
+                            <i data-lucide="star" class="star-filled"></i>
+                            <i data-lucide="star" class="star-filled"></i>
+                            <i data-lucide="star" class="star-filled"></i>
+                        </div>
+                        <p class="testimonial-text">"Po operaci kolene jsem potřeboval rehabilitaci doma. Paní Kučerová byla trpělivá, profesionální a vždy přesná. Díky ní jsem se postavil na nohy mnohem dříve, než jsem čekal."</p>
+                        <div class="testimonial-author">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" 
+                                 alt="Klient" 
+                                 class="testimonial-avatar"
+                                 loading="lazy">
+                            <div class="testimonial-author-info">
+                                <span class="testimonial-name">František M., Holoubkov</span>
+                                <span class="testimonial-relation">Pacient po operaci</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">
+                            <i data-lucide="star" class="star-filled"></i>
+                            <i data-lucide="star" class="star-filled"></i>
+                            <i data-lucide="star" class="star-filled"></i>
+                            <i data-lucide="star" class="star-filled"></i>
+                            <i data-lucide="star" class="star-filled"></i>
+                        </div>
+                        <p class="testimonial-text">"Naše malá dcera potřebovala speciální péči po narození. Sestry z Holoubkova byly neuvěřitelně jemné a odborné. Vždy nám vysvětlily vše, co jsme potřebovali vědět."</p>
+                        <div class="testimonial-author">
+                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&fit=crop&crop=face" 
+                                 alt="Klientka" 
+                                 class="testimonial-avatar"
+                                 loading="lazy">
+                            <div class="testimonial-author-info">
+                                <span class="testimonial-name">Martina P., Strašice</span>
+                                <span class="testimonial-relation">Matka pacientky</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonials-controls">
+                    <button class="testimonials-btn testimonials-prev" id="testimonialsPrev" aria-label="Předchozí reference">
+                        <i data-lucide="chevron-left"></i>
+                    </button>
+                    <div class="testimonials-dots">
+                        <button class="testimonials-dot active" data-index="0" aria-label="Reference 1"></button>
+                        <button class="testimonials-dot" data-index="1" aria-label="Reference 2"></button>
+                        <button class="testimonials-dot" data-index="2" aria-label="Reference 3"></button>
+                    </div>
+                    <button class="testimonials-btn testimonials-next" id="testimonialsNext" aria-label="Další reference">
+                        <i data-lucide="chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- CONTACT SECTION                            -->
+    <!-- ============================================ -->
+    <section class="contact" id="contact">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">Kontakt</span>
+                <h2 class="section-title">Spojte se s námi</h2>
+                <p class="section-subtitle">Jsme tu pro Vás 24 hodin denně, 7 dní v týdnu</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <div class="contact-card-icon">
+                            <i data-lucide="map-pin"></i>
+                        </div>
+                        <div class="contact-card-content">
+                            <h3>Adresa</h3>
+                            <p>Holoubkov 7<br>338 01 Holoubkov<br>okres Rokycany</p>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-card-icon">
+                            <i data-lucide="phone"></i>
+                        </div>
+                        <div class="contact-card-content">
+                            <h3>Telefon</h3>
+                            <p><a href="tel:+420123456789">+420 123 456 789</a></p>
+                            <p class="contact-note">Nepřetržitá linka</p>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-card-icon">
+                            <i data-lucide="mail"></i>
+                        </div>
+                        <div class="contact-card-content">
+                            <h3>Email</h3>
+                            <p><a href="mailto:info@domaci-pece.eu">info@domaci-pece.eu</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-card-icon">
+                            <i data-lucide="clock"></i>
+                        </div>
+                        <div class="contact-card-content">
+                            <h3>Provozní doba</h3>
+                            <p>Non-stop 24/7<br>365 dní v roce</p>
+                        </div>
+                    </div>
+                    <div class="contact-emergency">
+                        <i data-lucide="alert-circle" class="contact-emergency-icon"></i>
+                        <div class="contact-emergency-content">
+                            <h4>Pohotovostní služba</h4>
+                            <p>V akutních případech volejte <a href="tel:+420123456789">+420 123 456 789</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form-wrapper">
+                    <form class="contact-form" id="contactForm">
+                        <h3 class="contact-form-title">Nezávazná konzultace</h3>
+                        <p class="contact-form-subtitle">Vyplňte formulář a my se Vám ozveme do 24 hodin</p>
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" required placeholder=" ">
+                            <label for="name">Jméno a příjmení</label>
+                            <i data-lucide="user" class="form-icon"></i>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" required placeholder=" ">
+                            <label for="email">Emailová adresa</label>
+                            <i data-lucide="mail" class="form-icon"></i>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" id="phone" name="phone" required placeholder=" ">
+                            <label for="phone">Telefonní číslo</label>
+                            <i data-lucide="phone" class="form-icon"></i>
+                        </div>
+                        <div class="form-group">
+                            <select id="service" name="service" required>
+                                <option value="" disabled selected>Vyberte typ péče</option>
+                                <option value="zakladni">Základní ošetřovatelská péče</option>
+                                <option value="chronicke">Péče o chronicky nemocné</option>
+                                <option value="deti">Péče o děti</option>
+                                <option value="paliativni">Paliativní péče</option>
+                                <option value="rehabilitace">Rehabilitace doma</option>
+                                <option value="seniori">Péče o seniory</option>
+                                <option value="ostatni">Jiné / Nevím</option>
+                            </select>
+                            <label for="service" class="select-label">Typ péče</label>
+                            <i data-lucide="heart-pulse" class="form-icon"></i>
+                        </div>
+                        <div class="form-group form-group-textarea">
+                            <textarea id="message" name="message" rows="4" required placeholder=" "></textarea>
+                            <label for="message">Popis situace a potřeb</label>
+                            <i data-lucide="message-square" class="form-icon"></i>
+                        </div>
+                        <div class="form-group form-group-checkbox">
+                            <input type="checkbox" id="consent" name="consent" required>
+                            <label for="consent">Souhlasím se zpracováním osobních údajů v souladu s GDPR</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">
+                            <span>Odeslat poptávku</span>
+                            <i data-lucide="send" class="btn-icon"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- FOOTER                                       -->
+    <!-- ============================================ -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#hero" class="footer-logo">
+                        <i data-lucide="heart-pulse" class="footer-logo-icon"></i>
+                        <span>Domácí péče <strong>Holoubkov</strong></span>
+                    </a>
+                    <p class="footer-tagline">Staráme se o Vaše zdraví u Vás doma. Profesionální domácí zdravotní péče pro všechny věkové kategorie.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Facebook"><i data-lucide="facebook"></i></a>
+                        <a href="#" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Rychlé odkazy</h4>
+                    <ul>
+                        <li><a href="#about">O nás</a></li>
+                        <li><a href="#services">Služby</a></li>
+                        <li><a href="#team">Náš tým</a></li>
+                        <li><a href="#contact">Kontakt</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Služby</h4>
+                    <ul>
+                        <li><a href="#services">Základní péče</a></li>
+                        <li><a href="#services">Chronická onemocnění</a></li>
+                        <li><a href="#services">Paliativní péče</a></li>
+                        <li><a href="#services">Rehabilitace</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Kontakt</h4>
+                    <p><i data-lucide="map-pin"></i> Holoubkov 7, 338 01</p>
+                    <p><i data-lucide="phone"></i> <a href="tel:+420123456789">+420 123 456 789</a></p>
+                    <p><i data-lucide="mail"></i> <a href="mailto:info@domaci-pece.eu">info@domaci-pece.eu</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Agentura domácí zdravotní péče Holoubkov. Všechna práva vyhrazena.</p>
+                <div class="footer-legal">
+                    <a href="#">Zásady ochrany osobních údajů</a>
+                    <span class="footer-divider">|</span>
+                    <a href="#">Podmínky použití</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============================================ -->
+    <!-- BACK TO TOP BUTTON                           -->
+    <!-- ============================================ -->
+    <button class="back-to-top" id="backToTop" aria-label="Zpět nahoru">
+        <i data-lucide="chevron-up"></i>
+    </button>
+
+    <!-- Custom JS -->
+    <script src="js/main.js"></script>
+</body>
+</html>
